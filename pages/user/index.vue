@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ users }}
+    <button @click="fetchUsers">fetch</button>
   </div>
 </template>
 
@@ -8,8 +9,14 @@
 const users = ref([])
 
 onMounted(async() => {
-  users.value = await useFetch('https://jsonplaceholder.typicode.com/users')
+  fetchUsers()
 })
+
+
+const fetchUsers = async () => {
+  const res = await apiGet('/users');
+  users.value = res;
+};
 
 </script>
 
