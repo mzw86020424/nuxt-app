@@ -1,17 +1,17 @@
 <template>
   <div>
-    {{ users }}
-    <button @click="fetchUsers">fetch</button>
+    <user-table
+    :users="users"
+    ></user-table>
   </div>
 </template>
 
 <script setup>
 const users = ref([])
 
-onMounted(async() => {
+onMounted(() => {
   fetchUsers()
 })
-
 
 const fetchUsers = async () => {
   const res = await apiGet('/users');
@@ -19,7 +19,3 @@ const fetchUsers = async () => {
 };
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>
