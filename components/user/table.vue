@@ -34,11 +34,11 @@ defineProps({
     border-collapse: collapse;
   }
   th, td {
-    border: 1px solid #008b8b;
+    border: 1px solid #4CAF50;
     padding: 8px;
     text-align: left;
   }
   th {
-    background-color: #008b8b;
+    background-color: #4CAF50;
   }
 </style>
