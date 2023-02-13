@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmitId($event)">
+    <form @submit.prevent="onSubmitId()">
       <div>
         <input v-model="id" />
       </div>
@@ -8,7 +8,7 @@
         <button type="submit" class="search-button">id検索</button>
       </div>
     </form>
-    <form @submit.prevent="onSubmitName($event)">
+    <form @submit.prevent="onSubmitName()">
       <div>
         <input v-model="name" />
       </div>
@@ -38,12 +38,14 @@ const fetchUsers = async (params="") => {
   users.value = res;
 };
 
-const onSubmitId = (id) => {
-  fetchUsers({id:id})
+const onSubmitId = () => {
+  const param = id.value == "" ? null : {id: id.value};
+  fetchUsers(param)
 }
 
-const onSubmitName = (name) => {
-  fetchUsers({name:name})
+const onSubmitName = () => {
+  const param = name.value == "" ? null : {name: name.value};
+  fetchUsers(param)
 }
 
 </script>
