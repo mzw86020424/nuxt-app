@@ -1,5 +1,5 @@
 <template>
-  <!-- <div>
+  <div>
     <form @submit.prevent="onSubmitId()">
       <div>
         <input v-model="id" />
@@ -8,15 +8,15 @@
         <button type="submit" class="search-button">id検索</button>
       </div>
     </form>
-    <form @submit.prevent="onSubmitName()">
+    <form @submit.prevent="onSubmitUserId()">
       <div>
-        <input v-model="name" />
+        <input v-model="userId" />
       </div>
       <div>
-        <button type="submit" class="search-button">name検索</button>
+        <button type="submit" class="search-button">userId検索</button>
       </div>
     </form>
-  </div> -->
+  </div>
   <div>
     <post-table
       :posts="posts"
@@ -26,8 +26,8 @@
 
 <script setup>
 const posts = ref([])
-// const id = ref(null)
-// const name = ref(null)
+const id = ref(null)
+const userId = ref(null)
 
 onMounted(() => {
   fetchPosts()
@@ -38,15 +38,15 @@ const fetchPosts = async (params="") => {
   posts.value = res;
 };
 
-// const onSubmitId = () => {
-//   const param = id.value == "" ? null : {id: id.value};
-//   fetchUsers(param)
-// }
+const onSubmitId = () => {
+  const param = id.value == "" ? null : {id: id.value};
+  fetchPosts(param)
+}
 
-// const onSubmitName = () => {
-//   const param = name.value == "" ? null : {name: name.value};
-//   fetchUsers(param)
-// }
+const onSubmitUserId = () => {
+  const param = userId.value == "" ? null : {userId: userId.value};
+  fetchPosts(param)
+}
 
 </script>
 
