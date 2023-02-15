@@ -23,7 +23,6 @@
 defineProps({
   posts: { default: [] }
 })
-
 </script>
 
 <style lang="scss" scoped>
