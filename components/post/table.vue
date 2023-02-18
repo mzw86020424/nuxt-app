@@ -10,7 +10,11 @@
       </thead>
       <tbody>
         <tr v-for="post in posts" :key="post.id">
-          <td>{{ post.userId }}</td>
+          <td>
+            <a @click="onClickId(post.userId)">
+              {{ post.userId }}
+            </a>
+          </td>
           <td>{{ post.title }}</td>
           <td>{{ post.body }}</td>
         </tr>
@@ -23,6 +27,12 @@
 defineProps({
   posts: { default: [] }
 })
+
+const router = useRouter()
+
+const onClickId = (id) => {
+  router.push(`/user/show?id=${id}`)
+}
 </script>
 
 <style lang="scss" scoped>
