@@ -23,20 +23,33 @@
       </div>
     </div>
   </div>
+  <div>
+    <post-table
+      :posts="userPosts"
+    />
+  </div>
 </template>
 
 <script setup>
 const { query } = useRoute()
 
 const user = ref({})
+const userPosts = ref([])
 
 onMounted(async() => {
   await fetchUser();
+  await fetchUserPosts();
 });
 
 const fetchUser = async () => {
   const res = await apiGet('/users', query);
   user.value = res[0];
+};
+
+const fetchUserPosts = async () => {
+  const params = {userId: query.id}
+  const res = await apiGet('/posts', params);
+  userPosts.value = res;
 };
 </script>
 
