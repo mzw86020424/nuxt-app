@@ -1,20 +1,26 @@
 <template>
-  <div class="user-details">
-    <h1 class="user-details__name">{{ user.name }}</h1>
-    <p class="user-details__username">@{{ user.username }}</p>
-    <p class="user-details__email">{{ user.email }}</p>
-    <p class="user-details__phone">{{ user.phone }}</p>
-    <p class="user-details__website"><a :href="'http://' + user.website">{{ user.website }}</a></p>
-    <div class="user-details__address">
-      <h2>Address:</h2>
-      <p>{{ user.address.street }}, {{ user.address.suite }}, {{ user.address.city }}, {{ user.address.zipcode }}</p>
-      <p class="user-details__location">Lat: {{ user.address.geo.lat }}, Lng: {{ user.address.geo.lng }}</p>
-    </div>
-    <div class="user-details__company">
-      <h2>Company:</h2>
-      <p>{{ user.company.name }}</p>
-      <p>{{ user.company.catchPhrase }}</p>
-      <p>{{ user.company.bs }}</p>
+  <div class="user" v-if="user">
+    <h1>{{ user.name }}</h1>
+    <div class="user-info">
+      <div class="user-address">
+        <h2>Address</h2>
+        <p>{{ user.address?.street }}</p>
+        <p>{{ user.address?.suite }}</p>
+        <p>{{ user.address?.city }}, {{ user.address?.zipcode }}</p>
+        <p>Lat: {{ user.address?.geo.lat }}, Lng: {{ user.address?.geo.lng }}</p>
+      </div>
+      <div class="user-contact">
+        <h2>Contact</h2>
+        <p>{{ user.email }}</p>
+        <p>{{ user.phone }}</p>
+        <p>{{ user.website }}</p>
+      </div>
+      <div class="user-company">
+        <h2>Company</h2>
+        <p>{{ user.company?.name }}</p>
+        <p>{{ user.company?.catchPhrase }}</p>
+        <p>{{ user.company?.bs }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,8 +30,8 @@ const { query } = useRoute()
 
 const user = ref({})
 
-onMounted(() => {
-  fetchUser();
+onMounted(async() => {
+  await fetchUser();
 });
 
 const fetchUser = async () => {
@@ -35,48 +41,35 @@ const fetchUser = async () => {
 </script>
 
 <style lang="scss" scoped>
-.user-details {
+.user {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
 
-  &__name {
-    font-size: 3rem;
-    margin-bottom: 10px;
-  }
+.user h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
 
-  &__username {
-    font-size: 1.5rem;
-    color: gray;
-    margin-bottom: 20px;
-  }
+.user-info {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  &__email,
-  &__phone,
-  &__website {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
+.user-address,
+.user-contact,
+.user-company {
+  flex-basis: 33.33%;
+  margin-bottom: 20px;
+}
 
-  &__website a {
-    color: blue;
-  }
+.user-info h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
 
-  &__address,
-  &__company {
-    margin-top: 30px;
-  }
-
-  &__address h2,
-  &__company h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  &__location {
-    margin-top: 5px;
-    font-size: 1.1rem;
-    color: gray;
-  }
+.user-info p {
+  margin-bottom: 5px;
 }
 </style>
