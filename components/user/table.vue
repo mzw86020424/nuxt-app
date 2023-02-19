@@ -11,7 +11,11 @@
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>{{ user.id }}</td>
+          <td>
+            <a @click="onClickId(user.id)">
+              {{ user.id }}
+            </a>
+          </td>
           <td>{{ user.name }}</td>
           <td>{{ user.address.city }}</td>
           <td>{{ user.email }}</td>
@@ -26,6 +30,11 @@ defineProps({
   users: { default: [] }
 })
 
+const { push } = useRouter()
+
+const onClickId = (id) => {
+  push(`/user/show?id=${id}`)
+}
 </script>
 
 <style lang="scss" scoped>
