@@ -35,6 +35,7 @@ const { query } = useRoute()
 
 const user = ref({})
 const userPosts = ref([])
+const userId = query.id
 
 onMounted(async() => {
   await fetchUser();
@@ -42,13 +43,12 @@ onMounted(async() => {
 });
 
 const fetchUser = async () => {
-  const res = await apiGet('/users', query);
-  user.value = res[0];
+  const res = await apiGet(`/users/${userId}`);
+  user.value = res;
 };
 
 const fetchUserPosts = async () => {
-  const params = {userId: query.id}
-  const res = await apiGet('/posts', params);
+  const res = await apiGet('/posts', {userId: userId});
   userPosts.value = res;
 };
 </script>
