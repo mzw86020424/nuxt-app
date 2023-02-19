@@ -8,44 +8,44 @@
         <button type="submit" class="search-button">id検索</button>
       </div>
     </form>
-    <form @submit.prevent="onSubmitUserId()">
+    <form @submit.prevent="onSubmitName()">
       <div>
-        <input v-model="userId" />
+        <input v-model="name" />
       </div>
       <div>
-        <button type="submit" class="search-button">userId検索</button>
+        <button type="submit" class="search-button">name検索</button>
       </div>
     </form>
   </div>
   <div>
-    <post-table
-      :posts="posts"
+    <users-table
+      :users="users"
     />
   </div>
 </template>
 
 <script setup>
-const posts = ref([])
+const users = ref([])
 const id = ref(null)
-const userId = ref(null)
+const name = ref(null)
 
 onMounted(() => {
-  fetchPosts()
+  fetchUsers()
 })
 
-const fetchPosts = async (params="") => {
-  const res = await apiGet('/posts', params);
-  posts.value = res;
+const fetchUsers = async (params="") => {
+  const res = await apiGet('/users', params);
+  users.value = res;
 };
 
 const onSubmitId = () => {
   const param = id.value == "" ? null : {id: id.value};
-  fetchPosts(param)
+  fetchUsers(param)
 }
 
-const onSubmitUserId = () => {
-  const param = userId.value == "" ? null : {userId: userId.value};
-  fetchPosts(param)
+const onSubmitName = () => {
+  const param = name.value == "" ? null : {name: name.value};
+  fetchUsers(param)
 }
 
 </script>

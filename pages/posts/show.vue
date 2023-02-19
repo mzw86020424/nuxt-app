@@ -1,6 +1,11 @@
 <template>
   <div class="post-info">
-    <h2 class="title">{{ post.title }}</h2>
+    <h1 class="title">
+      {{ user.name }}
+    </h1>
+    <h4 class="title">
+      {{ post.title }}
+    </h4>
     <p class="body">{{ post.body }}</p>
   </div>
 </template>
@@ -8,15 +13,22 @@
 <script setup>
 const { query } = useRoute()
 
-const post = ref([])
+const post = ref({})
+const user = ref({})
 
 onMounted(async() => {
   await fetchPost();
+  await fetchUser();
 });
 
 const fetchPost = async () => {
   const res = await apiGet(`/posts/${query.id}`);
   post.value = res;
+};
+
+const fetchUser = async () => {
+  const res = await apiGet(`/users/${post.value.userId}`);
+  user.value = res;
 };
 </script>
 
@@ -30,7 +42,7 @@ const fetchPost = async () => {
 }
 
 .title {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 

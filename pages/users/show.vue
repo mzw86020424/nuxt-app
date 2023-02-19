@@ -1,6 +1,8 @@
 <template>
-  <div class="user" v-if="user">
+  <div class="user-name">
     <h1>{{ user.name }}</h1>
+  </div>
+  <div class="user" v-if="user">
     <div class="user-info">
       <div class="user-address">
         <h2>Address</h2>
@@ -24,7 +26,8 @@
     </div>
   </div>
   <div>
-    <post-table
+    <h2>{{ user.name }}'s posts</h2>
+    <posts-table
       :posts="userPosts"
     />
   </div>
@@ -57,9 +60,18 @@ const fetchUserPosts = async () => {
 .user {
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 60px;
   padding: 20px;
 }
 
+.user-name {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: white;
+}
 .user h1 {
   font-size: 2rem;
   margin-bottom: 10px;

@@ -3,22 +3,20 @@
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>City</th>
-          <th>Email</th>
+          <th>id</th>
+          <th>title</th>
+          <th>body</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="post in posts" :key="post.id">
           <td>
-            <a @click="onClickId(user.id)">
-              {{ user.id }}
+            <a @click="onClickId(post.id)">
+              {{ post.id }}
             </a>
           </td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.address.city }}</td>
-          <td>{{ user.email }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.body }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,13 +25,13 @@
 
 <script setup>
 defineProps({
-  users: { default: [] }
+  posts: { default: [] }
 })
 
 const { push } = useRouter()
 
 const onClickId = (id) => {
-  push(`/user/show?id=${id}`)
+  push(`/posts/show?id=${id}`)
 }
 </script>
 
