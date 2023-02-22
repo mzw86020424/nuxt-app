@@ -1,26 +1,32 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmitId()">
-      <div>
-        <input v-model="id" />
-      </div>
-      <div>
-        <button type="submit" class="search-button">id検索</button>
-      </div>
-    </form>
-    <form @submit.prevent="onSubmitName()">
-      <div>
-        <input v-model="name" />
-      </div>
-      <div>
-        <button type="submit" class="search-button">name検索</button>
-      </div>
-    </form>
-  </div>
-  <div>
-    <users-table
-      :users="users"
-    />
+    <div>
+      <form @submit.prevent="onSubmitId()">
+        <div>
+          <input v-model="id">
+        </div>
+        <div>
+          <button type="submit" class="search-button">
+            id検索
+          </button>
+        </div>
+      </form>
+      <form @submit.prevent="onSubmitName()">
+        <div>
+          <input v-model="name">
+        </div>
+        <div>
+          <button type="submit" class="search-button">
+            name検索
+          </button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <users-table
+        :users="users"
+      />
+    </div>
   </div>
 </template>
 
@@ -33,18 +39,18 @@ onMounted(() => {
   fetchUsers()
 })
 
-const fetchUsers = async (params="") => {
-  const res = await apiGet('/users', params);
-  users.value = res;
-};
+const fetchUsers = async (params = '') => {
+  const res = await apiGet('/users', params)
+  users.value = res
+}
 
 const onSubmitId = () => {
-  const param = id.value == "" ? null : {id: id.value};
+  const param = id.value === '' ? null : { id: id.value }
   fetchUsers(param)
 }
 
 const onSubmitName = () => {
-  const param = name.value == "" ? null : {name: name.value};
+  const param = name.value === '' ? null : { name: name.value }
   fetchUsers(param)
 }
 

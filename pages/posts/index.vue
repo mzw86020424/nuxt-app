@@ -1,26 +1,32 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmitId()">
-      <div>
-        <input v-model="id" />
-      </div>
-      <div>
-        <button type="submit" class="search-button">id検索</button>
-      </div>
-    </form>
-    <form @submit.prevent="onSubmitUserId()">
-      <div>
-        <input v-model="userId" />
-      </div>
-      <div>
-        <button type="submit" class="search-button">userId検索</button>
-      </div>
-    </form>
-  </div>
-  <div>
-    <posts-table
-      :posts="posts"
-    />
+    <div>
+      <form @submit.prevent="onSubmitId()">
+        <div>
+          <input v-model="id">
+        </div>
+        <div>
+          <button type="submit" class="search-button">
+            id検索
+          </button>
+        </div>
+      </form>
+      <form @submit.prevent="onSubmitUserId()">
+        <div>
+          <input v-model="userId">
+        </div>
+        <div>
+          <button type="submit" class="search-button">
+            userId検索
+          </button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <posts-table
+        :posts="posts"
+      />
+    </div>
   </div>
 </template>
 
@@ -33,18 +39,18 @@ onMounted(() => {
   fetchPosts()
 })
 
-const fetchPosts = async (params="") => {
-  const res = await apiGet('/posts', params);
-  posts.value = res;
-};
+const fetchPosts = async (params = '') => {
+  const res = await apiGet('/posts', params)
+  posts.value = res
+}
 
 const onSubmitId = () => {
-  const param = id.value == "" ? null : {id: id.value};
+  const param = id.value === '' ? null : { id: id.value }
   fetchPosts(param)
 }
 
 const onSubmitUserId = () => {
-  const param = userId.value == "" ? null : {userId: userId.value};
+  const param = userId.value === '' ? null : { userId: userId.value }
   fetchPosts(param)
 }
 

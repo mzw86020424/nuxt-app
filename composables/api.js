@@ -1,11 +1,11 @@
-export function apiGet(url, params) {
-    const route = useRoute();
-    return $fetch(buildUrl(url), {
-        // credentials: "include",
-        // https://qiita.com/kawaz/items/1e51c374b7a13c21b7e2
-        // headers: { "X-CALLER-URL": route.fullPath },
-        params,
-    });
+export function apiGet (url, params) {
+  // const route = useRoute()
+  return $fetch(buildUrl(url), {
+    // credentials: "include",
+    // https://qiita.com/kawaz/items/1e51c374b7a13c21b7e2
+    // headers: { "X-CALLER-URL": route.fullPath },
+    params
+  })
 }
 
 // export function apiPost(url, body) {
@@ -19,8 +19,8 @@ export function apiGet(url, params) {
 // }
 
 const buildUrl = (url) => {
-  const config = useRuntimeConfig();
-  const baseUrl = config.public.apiBaseUrl;
+  const config = useRuntimeConfig()
+  const baseUrl = config.public.apiBaseUrl
 
   return `${baseUrl}${url}`
 }

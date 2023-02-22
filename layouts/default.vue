@@ -1,19 +1,25 @@
 <template>
   <div>
     <header>
-    <div class="logo">My App</div>
-    <nav>
-      <ul>
-        <li>
-          <nuxt-link to="/users">users</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/posts">posts</nuxt-link>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <slot></slot>
+      <div class="logo">
+        My App
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <nuxt-link to="/users">
+              users
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/posts">
+              posts
+            </nuxt-link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <slot />
   </div>
 </template>
 

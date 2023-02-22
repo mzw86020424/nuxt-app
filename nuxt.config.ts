@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBaseUrl: "https://jsonplaceholder.typicode.com",
-    },
+      apiBaseUrl: 'https://jsonplaceholder.typicode.com'
+    }
   }
 })
