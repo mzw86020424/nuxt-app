@@ -40,7 +40,7 @@ onMounted(() => {
 })
 
 const fetchPosts = async (params = '') => {
-  const res = await apiGet('/posts', params)
+  const res = await jsonApiGet('/posts', params)
   posts.value = res
 }
 

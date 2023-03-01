@@ -48,12 +48,12 @@ onMounted(async () => {
 })
 
 const fetchUser = async () => {
-  const res = await apiGet(`/users/${userId}`)
+  const res = await jsonApiGet(`/users/${userId}`)
   user.value = res
 }
 
 const fetchUserPosts = async () => {
-  const res = await apiGet('/posts', { userId })
+  const res = await jsonApiGet('/posts', { userId })
   userPosts.value = res
 }
 </script>

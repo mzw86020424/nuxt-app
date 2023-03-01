@@ -1,4 +1,4 @@
-export function apiGet (url, params) {
+export function jsonApiGet (url, params) {
   // const route = useRoute()
   return $fetch(buildUrl(url), {
     // credentials: "include",

@@ -40,7 +40,7 @@ onMounted(() => {
 })
 
 const fetchUsers = async (params = '') => {
-  const res = await apiGet('/users', params)
+  const res = await jsonApiGet('/users', params)
   users.value = res
 }
 

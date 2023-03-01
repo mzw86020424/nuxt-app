@@ -34,17 +34,17 @@ onMounted(async () => {
 })
 
 const fetchPost = async () => {
-  const res = await apiGet(`/posts/${query.id}`)
+  const res = await jsonApiGet(`/posts/${query.id}`)
   post.value = res
 }
 
 const fetchUser = async () => {
-  const res = await apiGet(`/users/${post.value.userId}`)
+  const res = await jsonApiGet(`/users/${post.value.userId}`)
   user.value = res
 }
 
 const fetchComments = async () => {
-  const res = await apiGet(`/posts/${query.id}/comments`)
+  const res = await jsonApiGet(`/posts/${query.id}/comments`)
   comments.value = res
 }
 </script>
