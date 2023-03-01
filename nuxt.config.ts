@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBaseUrl: 'https://jsonplaceholder.typicode.com'
+      jsonApiBaseUrl: 'https://jsonplaceholder.typicode.com',
+      rakutenApiBaseUrl: 'https://app.rakuten.co.jp/services/api/IchibaItem/Search'
     }
   }
 })

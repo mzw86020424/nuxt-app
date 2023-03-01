@@ -20,7 +20,7 @@ export function jsonApiGet (url, params) {
 
 const buildUrl = (url) => {
   const config = useRuntimeConfig()
-  const baseUrl = config.public.apiBaseUrl
+  const baseUrl = config.public.jsonApiBaseUrl
 
   return `${baseUrl}${url}`
 }
