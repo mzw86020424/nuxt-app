@@ -1,5 +1,7 @@
 // https://webservice.rakuten.co.jp/documentation
 export function rakutenApiGet (url, params) {
+  const config = useRuntimeConfig()
+  params.applicationId = config.public.rakutenAppId
   return $fetch(buildUrl(url), {
     params
   })

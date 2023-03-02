@@ -21,13 +21,14 @@
 
 <script setup>
 const rakutenItems = ref({})
+const params = ref({})
 
 onMounted(async () => {
   await fetchRatekunItems()
 })
 
 const fetchRatekunItems = async () => {
-  const res = await rakutenApiGet('/20220601?format=json&keyword=%E6%A5%BD%E5%A4%A9&genreId=555086&applicationId=1090813945931630353')
+  const res = await rakutenApiGet('/20220601?format=json&keyword=%E6%A5%BD%E5%A4%A9&genreId=555086', params)
   rakutenItems.value = res.Items
 }
 </script>
