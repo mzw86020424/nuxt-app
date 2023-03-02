@@ -11,7 +11,6 @@
         {{ post.body }}
       </p>
     </div>
-    {{ rakutenItems }}
     <h3>
       comments:
     </h3>
@@ -27,13 +26,11 @@ const { query } = useRoute()
 const post = ref({})
 const user = ref({})
 const comments = ref([])
-const rakutenItems = ref({})
 
 onMounted(async () => {
   await fetchPost()
   await fetchUser()
   await fetchComments()
-  await fetchRatekunItems()
 })
 
 const fetchPost = async () => {
@@ -51,10 +48,6 @@ const fetchComments = async () => {
   comments.value = res
 }
 
-const fetchRatekunItems = async () => {
-  const res = await rakutenApiGet('/20220601?format=json&keyword=%E6%A5%BD%E5%A4%A9&genreId=555086&applicationId=e06e2a5afcf14b52139c1fb6c58e9dbc')
-  rakutenItems.value = res
-}
 </script>
 
 <style lang="scss" scoped>
