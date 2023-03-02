@@ -16,6 +16,11 @@
               posts
             </nuxt-link>
           </li>
+          <li>
+            <nuxt-link to="/rakutens">
+              rakutens
+            </nuxt-link>
+          </li>
         </ul>
       </nav>
     </header>

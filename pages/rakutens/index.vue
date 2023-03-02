@@ -1,12 +1,19 @@
 <template>
-  <div>
-    <h1>商品一覧</h1>
-
-    <ul>
-      <li v-for="(v, index) in rakutenItems" :key="index">
-        <h2>{{ v.Item.itemName }}</h2>
-        <p>商品番号: {{ v.Item.itemCode }}</p>
-        <p>価格: {{ v.Item.itemPrice }}円</p>
+  <div class="container">
+    <h1 class="heading">
+      商品一覧
+    </h1>
+    <ul class="list">
+      <li v-for="(v, index) in rakutenItems" :key="index" class="item">
+        <h2 class="item__title">
+          {{ v.Item.itemName }}
+        </h2>
+        <p class="item__code">
+          商品番号: {{ v.Item.itemCode }}
+        </p>
+        <p class="item__price">
+          価格: {{ v.Item.itemPrice }}円
+        </p>
       </li>
     </ul>
   </div>
@@ -26,40 +33,41 @@ const fetchRatekunItems = async () => {
 </script>
 
 <style lang="scss" scoped>
-div {
+.container {
   max-width: 800px;
   margin: 0 auto;
+}
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
+.heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-    li {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      border: 1px solid #ccc;
+.item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
 
-      h2 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
+.item__title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
 
-      p {
-        margin: 0;
-        font-size: 1rem;
-        color: #555;
+.item__code,
+.item__price {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
 
-        & + p {
-          margin-top: 0.5rem;
-        }
-      }
-    }
-  }
+.item__price + .item__price {
+  margin-top: 0.5rem;
 }
 </style>
