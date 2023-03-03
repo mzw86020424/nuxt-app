@@ -21,15 +21,22 @@
 
 <script setup>
 const rakutenItems = ref({})
+const rakutenAreaCodes = ref({})
 const params = ref({})
 
 onMounted(async () => {
   await fetchRatekunItems()
+  await fetchRatekunAreaCodes()
 })
 
 const fetchRatekunItems = async () => {
-  const res = await rakutenApiGet('/20220601?format=json&keyword=%E6%A5%BD%E5%A4%A9&genreId=555086', params)
+  const res = await rakutenApiGet('/IchibaItem/Search/20220601?format=json&keyword=%E6%A5%BD%E5%A4%A9&genreId=555086', params)
   rakutenItems.value = res.Items
+}
+
+const fetchRatekunAreaCodes = async () => {
+  const res = await rakutenApiGet('/Travel/GetAreaClass/20131024?format=json', params)
+  rakutenAreaCodes.value = res.Items
 }
 </script>
 
