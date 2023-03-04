@@ -2,23 +2,23 @@
   <div>
     <header>
       <div class="logo">
-        My App
+        rakuten
       </div>
       <nav>
         <ul>
           <li>
-            <nuxt-link to="/users">
-              users
+            <nuxt-link to="/user">
+              user
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/posts">
-              posts
+            <nuxt-link to="/post">
+              post
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/rakutens">
-              rakutens
+            <nuxt-link to="/rakuten/item">
+              rakuten
             </nuxt-link>
           </li>
         </ul>

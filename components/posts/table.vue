@@ -31,7 +31,7 @@ defineProps({
 const { push } = useRouter()
 
 const onClickId = (id) => {
-  push(`/posts/show?id=${id}`)
+  push(`/post/show?id=${id}`)
 }
 </script>
 
