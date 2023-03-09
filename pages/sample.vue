@@ -2,7 +2,6 @@
 <template>
   <div>
     <div>
-      <h1>入力フォームバリデーション</h1>
       <form @submit.prevent="submitForm">
         <div>
           <label for="name"> 名前 </label>
@@ -16,9 +15,9 @@
         <div>
           <label for="name"> 地域 </label>
           <select v-model="formData.area">
-            <option>北海道</option>
-            <option>沖縄</option>
-            <option>東京</option>
+            <option v-for="area in areas" :key="area.value" :value="area.value">
+              {{ area.text }}
+            </option>
           </select>
         </div>
         <div>
@@ -60,6 +59,21 @@ const formData = reactive({
   email: '',
   area: ''
 })
+
+const areas = [
+  {
+    value: 1,
+    text: '東京'
+  },
+  {
+    value: 2,
+    text: '北海道'
+  },
+  {
+    value: 3,
+    text: '沖縄'
+  }
+]
 
 const submitForm = () => {
   console.log('submit', formData)
