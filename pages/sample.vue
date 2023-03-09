@@ -14,6 +14,14 @@
           >
         </div>
         <div>
+          <label for="name"> 地域 </label>
+          <select v-model="formData.area">
+            <option>北海道</option>
+            <option>沖縄</option>
+            <option>東京</option>
+          </select>
+        </div>
+        <div>
           <label for="age">年齢 </label>
           <input
             id="age"
@@ -49,7 +57,8 @@
 const formData = reactive({
   name: '',
   age: '',
-  email: ''
+  email: '',
+  area: ''
 })
 
 const submitForm = () => {
