@@ -5,18 +5,29 @@
         <tr>
           <th>image</th>
           <th>hotelName</th>
-          <th>hotelKanaName</th>
           <th>hotelSpecial</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="hotel in hotels" :key="hotel.id">
           <td>
-            <img :src="hotel.hotel[0].hotelBasicInfo.hotelImageUrl" style="width: 200px;" alt="">
+            <img :src="hotel.hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
           </td>
-          <td>{{ hotel.hotel[0].hotelBasicInfo.hotelName }}</td>
-          <td>{{ hotel.hotel[0].hotelBasicInfo.hotelKanaName }}</td>
-          <td>{{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}</td>
+          <td>
+            <a :href="hotel.hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
+              <p style="font-size: x-small;">
+                {{ hotel.hotel[0].hotelBasicInfo.hotelKanaName }}
+              </p>
+              <p style="font-size: small;">
+                {{ hotel.hotel[0].hotelBasicInfo.hotelName }}
+              </p>
+            </a>
+          </td>
+          <td>
+            <p style="font-size: x-small;">
+              {{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}
+            </p>
+          </td>
         </tr>
       </tbody>
     </table>
