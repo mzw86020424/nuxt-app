@@ -14,14 +14,14 @@
             <img :src="hotel.hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
           </td>
           <td>
-            <a :href="hotel.hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
+            <nuxt-link :to="hotel.hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
               <p style="font-size: x-small;">
                 {{ hotel.hotel[0].hotelBasicInfo.hotelKanaName }}
               </p>
               <p style="font-size: small;">
                 {{ hotel.hotel[0].hotelBasicInfo.hotelName }}
               </p>
-            </a>
+            </nuxt-link>
           </td>
           <td>
             <p style="font-size: x-small;">
