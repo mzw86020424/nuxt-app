@@ -14,18 +14,21 @@
       </form>
     </div>
     <div>
-      {{ hotels }}
+      <rakuten-travels-hotel-table
+        :hotels="hotels"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
+
 const formData = reactive({
   keyword: ''
 })
 const hotels = ref([])
 const page = ref(1)
-const hits = ref(2)
+const hits = ref(10)
 
 const searchHotels = async () => {
   const params = {
