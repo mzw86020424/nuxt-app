@@ -18,7 +18,12 @@
           </li>
           <li>
             <nuxt-link to="/rakuten/item">
-              rakuten
+[]              rakuten items
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/rakuten/travel/hotels">
+              rakuten hotels
             </nuxt-link>
           </li>
         </ul>
