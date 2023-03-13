@@ -18,7 +18,7 @@
           </li>
           <li>
             <nuxt-link to="/rakuten/item">
-[]              rakuten items
+              rakuten items
             </nuxt-link>
           </li>
           <li>
