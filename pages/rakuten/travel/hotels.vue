@@ -25,6 +25,8 @@
       </div>
       <rakuten-travels-hotel-table
         :hotels="hotels"
+        @prev="onClickPrev"
+        @next="onClickNext"
       />
     </div>
   </div>
@@ -51,12 +53,12 @@ const searchHotels = async () => {
   pagingInfo.value = res.pagingInfo
 }
 
-const toPrevPage = computed(() => {
+const onClickPrev = computed(() => {
   page.value -= 1
   searchHotels()
 })
 
-const toNextPage = computed(() => {
+const onClickNext = computed(() => {
   page.value += 1
   searchHotels()
 })

@@ -1,14 +1,13 @@
 <template>
   <div>
-    <!-- {{ pagingInfo }}
     <div>
-      <h3>{{pagingInfo.recordCount}}件</h3>
+      <h3>{{pagingInfo?.recordCount}}件</h3>
       <div style="flex: auto;">
-        <nuxt-link> ＜ </nuxt-link>
-        <h3>{{pagingInfo.page}}ページ</h3>
-        <nuxt-link> ＞ </nuxt-link>
+        <button @click="emits('prev')"> ＜ </button>
+        <h3>{{pagingInfo?.page}}ページ</h3>
+        <button @click="emits('next')"> ＞ </button>
       </div>
-    </div> -->
+    </div>
     <table>
       <thead>
         <tr>
@@ -48,6 +47,11 @@ defineProps({
   hotels: { default: [] },
   // pagingInfo: { default: {} }
 })
+
+defineEmits([
+  'prev',
+  'next'
+])
 
 </script>
 
