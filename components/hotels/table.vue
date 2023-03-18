@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <generals-modal :isVisible="isModalVisible"  @close="isModalVisible=false"></generals-modal>
-      <button @click="isModalVisible=true">modal</button>
-      <h3>{{ pagingInfo.recordCount }}件</h3>
-      <div style="flex: auto;">
-        <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
-        <h3>{{ pagingInfo.page }}ページ</h3>
-        <button v-if="!isLastPage" @click="emits('next')"> ＞ </button>
+      <div v-if="pagingInfo.recordCount">
+        <h3>{{ pagingInfo.recordCount }}件</h3>
+        <div class="pagination">
+          <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
+          <h3>{{ pagingInfo.page }}ページ</h3>
+          <button v-if="!isLastPage" @click="emits('next')"> ＞ </button>
+        </div>
       </div>
     </div>
     <table>
@@ -45,7 +45,6 @@
 </template>
 
 <script setup>
-const isModalVisible = ref(false)
 const props = defineProps({
   hotels: { default: [] },
   pagingInfo: { default: {} }
@@ -65,6 +64,10 @@ const isLastPage = computed(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.pagination {
+  display: flex;
+  align-items: center;
+}
 
 </style>

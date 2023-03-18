@@ -14,7 +14,7 @@
       </form>
     </div>
     <div>
-      <rakuten-travels-hotel-table
+      <hotels-table
         :hotels="hotels"
         :paging-info="pagingInfo"
         @prev="onClickPrev"
