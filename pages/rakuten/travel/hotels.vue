@@ -14,17 +14,9 @@
       </form>
     </div>
     <div>
-      {{ pagingInfo }}
-      <div>
-        <h3>{{ pagingInfo.recordCount }}件</h3>
-        <div style="flex: auto;">
-          <a @click="toPrevPage"> ＜ </a>
-          <h3>{{ pagingInfo.page }}ページ</h3>
-          <a @click="toNextPage"> ＞ </a>
-        </div>
-      </div>
       <rakuten-travels-hotel-table
         :hotels="hotels"
+        :paging-info="pagingInfo"
         @prev="onClickPrev"
         @next="onClickNext"
       />
@@ -53,17 +45,13 @@ const searchHotels = async () => {
   pagingInfo.value = res.pagingInfo
 }
 
-const onClickPrev = computed(() => {
+const onClickPrev = () => {
   page.value -= 1
   searchHotels()
-})
+}
 
-const onClickNext = computed(() => {
+const onClickNext = () => {
   page.value += 1
   searchHotels()
-})
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

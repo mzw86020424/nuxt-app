@@ -1,11 +1,11 @@
 <template>
   <div>
     <div>
-      <h3>{{pagingInfo?.recordCount}}件</h3>
+      <h3>{{ pagingInfo.recordCount }}件</h3>
       <div style="flex: auto;">
-        <button @click="emits('prev')"> ＜ </button>
-        <h3>{{pagingInfo?.page}}ページ</h3>
-        <button @click="emits('next')"> ＞ </button>
+        <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
+        <h3>{{ pagingInfo.page }}ページ</h3>
+        <button v-if="!isLastPage" @click="emits('next')"> ＞ </button>
       </div>
     </div>
     <table>
@@ -43,29 +43,21 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   hotels: { default: [] },
-  // pagingInfo: { default: {} }
+  pagingInfo: { default: {} }
 })
 
-defineEmits([
+const emits = defineEmits([
   'prev',
   'next'
 ])
 
-</script>
+const isFirstPage = computed(() => {
+  return props.pagingInfo.page === 1
+})
 
-<style lang="scss" scoped>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #4CAF50;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #4CAF50;
-  }
-</style>
+const isLastPage = computed(() => {
+  return props.pagingInfo.page === props.pagingInfo.pageCount
+})
+</script>
