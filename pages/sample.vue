@@ -80,7 +80,3 @@ const submitForm = () => {
 }
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

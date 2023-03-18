@@ -6,5 +6,8 @@ export default defineNuxtConfig({
       rakutenApiBaseUrl: 'https://app.rakuten.co.jp/services/api',
       rakutenAppId: '1090813945931630353'
     }
-  }
+  },
+  css: [
+    '@/assets/scss/main.scss'
+  ]
 })

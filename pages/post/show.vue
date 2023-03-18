@@ -49,23 +49,3 @@ const fetchComments = async () => {
 }
 
 </script>
-
-<style lang="scss" scoped>
-.post-info {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.title {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.body {
-  font-size: 16px;
-  line-height: 1.5;
-}
-</style>

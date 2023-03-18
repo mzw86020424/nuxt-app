@@ -55,19 +55,3 @@ const onSubmitUserId = () => {
 }
 
 </script>
-
-<style lang="scss" scoped>
-.search-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
-}
-</style>

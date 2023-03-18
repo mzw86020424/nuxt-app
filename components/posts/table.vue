@@ -34,18 +34,3 @@ const onClickId = (id) => {
   push(`/post/show?id=${id}`)
 }
 </script>
-
-<style lang="scss" scoped>
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th, td {
-    border: 1px solid #4CAF50;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #4CAF50;
-  }
-</style>
