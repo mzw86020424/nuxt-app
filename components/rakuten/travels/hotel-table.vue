@@ -1,6 +1,8 @@
 <template>
   <div>
     <div>
+      <generals-modal :isVisible="isModalVisible"  @close="isModalVisible=false"></generals-modal>
+      <button @click="isModalVisible=true">modal</button>
       <h3>{{ pagingInfo.recordCount }}件</h3>
       <div style="flex: auto;">
         <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
@@ -43,6 +45,7 @@
 </template>
 
 <script setup>
+const isModalVisible = ref(false)
 const props = defineProps({
   hotels: { default: [] },
   pagingInfo: { default: {} }
@@ -61,3 +64,7 @@ const isLastPage = computed(() => {
   return props.pagingInfo.page === props.pagingInfo.pageCount
 })
 </script>
+
+<style scoped>
+
+</style>
