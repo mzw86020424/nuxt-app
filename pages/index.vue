@@ -40,7 +40,7 @@ const searchHotels = async () => {
     page: page.value,
     hits: hits.value
   }
-  const res = await rakutenApiGet('/Travel/KeywordHotelSearch/20170426?format=json', params)
+  const res = await fetchHotels(params)
   hotels.value = res.hotels
   pagingInfo.value = res.pagingInfo
 }

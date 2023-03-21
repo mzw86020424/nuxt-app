@@ -21,21 +21,21 @@
       <tbody>
         <tr v-for="hotel in hotels" :key="hotel.id">
           <td>
-            <img :src="hotel.hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
+            <img :src="hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
           </td>
           <td>
-            <nuxt-link :to="hotel.hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
+            <nuxt-link :to="hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
               <p style="font-size: x-small;">
-                {{ hotel.hotel[0].hotelBasicInfo.hotelKanaName }}
+                {{ hotel[0].hotelBasicInfo.hotelKanaName }}
               </p>
               <p style="font-size: small;">
-                {{ hotel.hotel[0].hotelBasicInfo.hotelName }}
+                {{ hotel[0].hotelBasicInfo.hotelName }}
               </p>
             </nuxt-link>
           </td>
           <td>
             <p style="font-size: x-small;">
-              {{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}
+              {{ hotel[0].hotelBasicInfo.hotelSpecial }}
             </p>
           </td>
         </tr>
