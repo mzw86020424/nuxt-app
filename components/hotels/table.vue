@@ -24,7 +24,7 @@
             <img :src="hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
           </td>
           <td>
-            <nuxt-link :to="hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
+            <nuxt-link :to="`hotel?id=${hotel[0].hotelBasicInfo.hotelNo}`" target="_blank">
               <p style="font-size: x-small;">
                 {{ hotel[0].hotelBasicInfo.hotelKanaName }}
               </p>
