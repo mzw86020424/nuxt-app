@@ -1,11 +1,20 @@
 <template>
   <div class="hotel-info">
-    <h1 class="hotel-name">{{ hotelInfo.hotelName }}</h1>
-    <p class="hotel-address">{{ hotelInfo.address1 }} {{ hotelInfo.address2 }}</p>
+    <button @click="router.back()">
+      戻る
+    </button>
+    <h1 class="hotel-name">
+      {{ hotelInfo.hotelName }}
+    </h1>
+    <p class="hotel-address">
+      {{ hotelInfo.address1 }} {{ hotelInfo.address2 }}
+    </p>
     <div class="hotel-image">
-      <img :src="hotelInfo.hotelImageUrl" alt="hotel image" />
+      <img :src="hotelInfo.hotelImageUrl" alt="hotel image">
     </div>
-    <p class="hotel-special">{{ hotelInfo.hotelSpecial }}</p>
+    <p class="hotel-special">
+      {{ hotelInfo.hotelSpecial }}
+    </p>
     <div class="hotel-details">
       <div class="detail">
         <span class="label">チェックイン</span>
@@ -29,13 +38,13 @@
 
 <script setup>
 const route = useRoute()
+const router = useRouter()
 const hotelInfo = ref({})
 
 onMounted(async () => {
   const res = await fetchHotelById(route.query.id)
   hotelInfo.value = res.hotels[0][0].hotelBasicInfo
 })
-
 </script>
 
 <style lang="scss" scoped>
