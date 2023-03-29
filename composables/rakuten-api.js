@@ -1,8 +1,5 @@
 // https://webservice.rakuten.co.jp/documentation
 export async function fetchHotels (params) {
-  params.format = 'json'
-  params.formatVersion = '2'
-
   return await rakutenApiGet('/Travel/KeywordHotelSearch/20170426', params)
 }
 
