@@ -11,6 +11,11 @@
               home
             </nuxt-link>
           </li>
+          <li>
+            <nuxt-link to="/hotels">
+              hotels
+            </nuxt-link>
+          </li>
         </ul>
       </nav>
     </header>
