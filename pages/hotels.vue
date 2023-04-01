@@ -35,10 +35,9 @@ const hotels = ref([])
 const pagingInfo = ref({})
 const page = ref(1)
 const hits = ref(10)
-const params = ref({})
 
 const addQueryParams = () => {
-  params.value = {
+  const params = {
     keyword: utf8Encode(formData.keyword),
     page: page.value,
     hits: hits.value,
@@ -48,16 +47,24 @@ const addQueryParams = () => {
 
   router.push({
     path: '/hotels',
-    query: params.value
+    query: params
   })
 }
 
-onBeforeRouteUpdate((_to, _from) => {
-  searchHotels()
+onMounted(() => {
+  const query = router.currentRoute.value.query
+  if (query) {
+    formData.keyword = query.keyword
+    searchHotels(query)
+  }
 })
 
-const searchHotels = async () => {
-  const res = await fetchHotels(params.value)
+onBeforeRouteUpdate((to, _from) => {
+  searchHotels(to.query)
+})
+
+const searchHotels = async (query) => {
+  const res = await fetchHotels(query)
   hotels.value = res.hotels
   pagingInfo.value = res.pagingInfo
 }
