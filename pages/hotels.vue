@@ -1,8 +1,7 @@
 <template>
   <div>
     <div>
-      query: {{ queryString }}
-      <form @submit.prevent="searchHotels">
+      <form @submit.prevent="addQueryParams()">
         <div>
           <label for="name"> ホテル検索 </label>
           <input v-model="formData.keyword" type="text">
@@ -27,6 +26,7 @@
 
 <script setup>
 import { onBeforeRouteUpdate } from 'vue-router'
+const router = useRouter()
 
 const formData = reactive({
   keyword: ''
@@ -35,10 +35,10 @@ const hotels = ref([])
 const pagingInfo = ref({})
 const page = ref(1)
 const hits = ref(10)
-const queryString = ref('')
+const params = ref({})
 
-const searchHotels = async () => {
-  const params = {
+const addQueryParams = () => {
+  params.value = {
     keyword: utf8Encode(formData.keyword),
     page: page.value,
     hits: hits.value,
@@ -46,25 +46,29 @@ const searchHotels = async () => {
     formatVersion: '2'
   }
 
-  queryString.value = createQueryString(params)
+  router.push({
+    path: '/hotels',
+    query: params.value
+  })
+}
 
-  const res = await fetchHotels(params)
+onBeforeRouteUpdate((_to, _from) => {
+  searchHotels()
+})
+
+const searchHotels = async () => {
+  const res = await fetchHotels(params.value)
   hotels.value = res.hotels
   pagingInfo.value = res.pagingInfo
 }
 
-// onBeforeRouteUpdate((to, from) => {
-//   console.log(to)
-//   console.log(from)
-// })
-
 const onClickPrev = () => {
   page.value -= 1
-  searchHotels()
+  addQueryParams()
 }
 
 const onClickNext = () => {
   page.value += 1
-  searchHotels()
+  addQueryParams()
 }
 </script>
