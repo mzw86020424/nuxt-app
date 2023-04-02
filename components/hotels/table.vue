@@ -1,11 +1,13 @@
 <template>
   <div>
     <div>
-      <h3>{{ pagingInfo.recordCount }}件</h3>
-      <div style="flex: auto;">
-        <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
-        <h3>{{ pagingInfo.page }}ページ</h3>
-        <button v-if="!isLastPage" @click="emits('next')"> ＞ </button>
+      <div v-if="pagingInfo.recordCount">
+        <h3>{{ pagingInfo.recordCount }}件</h3>
+        <div class="pagination">
+          <button v-if="!isFirstPage" @click="emits('prev')"> ＜ </button>
+          <h3>{{ pagingInfo.page }}ページ</h3>
+          <button v-if="!isLastPage" @click="emits('next')"> ＞ </button>
+        </div>
       </div>
     </div>
     <table>
@@ -19,21 +21,21 @@
       <tbody>
         <tr v-for="hotel in hotels" :key="hotel.id">
           <td>
-            <img :src="hotel.hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
+            <img :src="hotel[0].hotelBasicInfo.hotelThumbnailUrl" style="width: 100px;" alt="">
           </td>
           <td>
-            <nuxt-link :to="hotel.hotel[0].hotelBasicInfo.hotelInformationUrl" target="_blank">
+            <nuxt-link :to="`hotel?id=${hotel[0].hotelBasicInfo.hotelNo}`">
               <p style="font-size: x-small;">
-                {{ hotel.hotel[0].hotelBasicInfo.hotelKanaName }}
+                {{ hotel[0].hotelBasicInfo.hotelKanaName }}
               </p>
               <p style="font-size: small;">
-                {{ hotel.hotel[0].hotelBasicInfo.hotelName }}
+                {{ hotel[0].hotelBasicInfo.hotelName }}
               </p>
             </nuxt-link>
           </td>
           <td>
             <p style="font-size: x-small;">
-              {{ hotel.hotel[0].hotelBasicInfo.hotelSpecial }}
+              {{ hotel[0].hotelBasicInfo.hotelSpecial }}
             </p>
           </td>
         </tr>
@@ -61,3 +63,11 @@ const isLastPage = computed(() => {
   return props.pagingInfo.page === props.pagingInfo.pageCount
 })
 </script>
+
+<style lang="scss" scoped>
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <form @submit.prevent="searchHotels">
+      <form @submit.prevent="addQueryParams()">
         <div>
           <label for="name"> ホテル検索 </label>
           <input v-model="formData.keyword" type="text">
@@ -14,7 +14,7 @@
       </form>
     </div>
     <div>
-      <rakuten-travels-hotel-table
+      <hotels-table
         :hotels="hotels"
         :paging-info="pagingInfo"
         @prev="onClickPrev"
@@ -25,6 +25,8 @@
 </template>
 
 <script setup>
+import { onBeforeRouteUpdate } from 'vue-router'
+const router = useRouter()
 
 const formData = reactive({
   keyword: ''
@@ -34,24 +36,46 @@ const pagingInfo = ref({})
 const page = ref(1)
 const hits = ref(10)
 
-const searchHotels = async () => {
+const addQueryParams = () => {
   const params = {
-    keyword: utf8Encode(formData.keyword),
+    keyword: formData.keyword,
     page: page.value,
-    hits: hits.value
+    hits: hits.value,
+    format: 'json',
+    formatVersion: '2'
   }
-  const res = await rakutenApiGet('/Travel/KeywordHotelSearch/20170426?format=json', params)
+
+  router.push({
+    path: '/hotels',
+    query: params
+  })
+}
+
+onMounted(() => {
+  const query = router.currentRoute.value.query
+  if (query) {
+    formData.keyword = query.keyword
+    searchHotels(query)
+  }
+})
+
+onBeforeRouteUpdate((to, _from) => {
+  searchHotels(to.query)
+})
+
+const searchHotels = async (query) => {
+  const res = await fetchHotels(query)
   hotels.value = res.hotels
   pagingInfo.value = res.pagingInfo
 }
 
 const onClickPrev = () => {
   page.value -= 1
-  searchHotels()
+  addQueryParams()
 }
 
 const onClickNext = () => {
   page.value += 1
-  searchHotels()
+  addQueryParams()
 }
 </script>
