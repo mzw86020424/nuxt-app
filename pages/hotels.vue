@@ -38,7 +38,7 @@ const hits = ref(10)
 
 const addQueryParams = () => {
   const params = {
-    keyword: utf8Encode(formData.keyword),
+    keyword: formData.keyword,
     page: page.value,
     hits: hits.value,
     format: 'json',
