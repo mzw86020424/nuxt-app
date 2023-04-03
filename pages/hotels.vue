@@ -53,7 +53,7 @@ const addQueryParams = () => {
 
 onMounted(() => {
   const query = router.currentRoute.value.query
-  if (query) {
+  if (query.keyword) {
     formData.keyword = query.keyword
     searchHotels(query)
   }
