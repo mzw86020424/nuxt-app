@@ -67,6 +67,7 @@ const searchHotels = async (query) => {
   const res = await fetchHotels(query)
   hotels.value = res.hotels
   pagingInfo.value = res.pagingInfo
+  page.value = res.pagingInfo.page
 }
 
 const onClickPrev = () => {
